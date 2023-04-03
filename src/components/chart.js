@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Chart } from 'react-google-charts';
 
 const data = [
@@ -15,7 +15,7 @@ const options = {
   legend: { position: 'bottom' },
 };
 
-const StockChart = () => {
+const StockChart = (props) => {
   return (
     <Chart chartType="LineChart" data={data} options={options} width="100%" height="400px" />
   );

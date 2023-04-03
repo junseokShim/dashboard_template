@@ -1,101 +1,98 @@
 import React, { useState } from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Grid, MenuItem, Select } from '@material-ui/core';
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Col
+} from 'reactstrap';
+
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: 200,
-      },
-      padding: theme.spacing(2),
-    },
-    button: {
-      marginTop: theme.spacing(1),
-    },
-  }));
+  root: {
+    padding: theme.spacing(2),
+  },
+  button: {
+    marginTop: theme.spacing(1),
+  },
+}));
 
-export default function CombinationBox() {
-    const classes = useStyles();
-    const [first, setFirst] = useState('');
-    const [second, setSecond] = useState('');
-    const [third, setThird] = useState('');
+const CombinationBox = (props) => {
+  const classes = useStyles();
 
-    const handleFirstChange = (event) => {
-        setFirst(event.target.value);
-    };
+  const handleStockChange = (event) => {
+    props.setSelectedStock(event.target.value);
+  };
 
-    const handleSecondChange = (event) => {
-        setSecond(event.target.value);
-    };
+  const handleSubmitButton = () => {
+    console.log('Selected Stock:', props.selectedStock);
+    console.log('Selected Start Date:', props.electedStartDate);
+    console.log('Selected End Date:', props.selectedEndDate);
+    alert(props.selectedStock);
+    alert(props.selectedStartDate);
+    alert(props.selectedEndDate);
+  }
 
-    const handleThirdChange = (event) => {
-        setThird(event.target.value);
-    };
-
-    return (
-        <div className={classes.root}>
-        <Grid container justify="center">
-            <Grid item xs={12}>
-            <h3>Select Cycle Data</h3>
-            </Grid>
-            <Grid item xs={12}>
-            <Select
-                labelId="first-label"
-                id="first-select"
-                value={first}
-                onChange={handleFirstChange}
-                displayEmpty
-                fullWidth
-            >
-                <MenuItem value="" disabled>
-                Type
-                </MenuItem>
-                <MenuItem value="Option1">Option 1</MenuItem>
-                <MenuItem value="Option2">Option 2</MenuItem>
-                <MenuItem value="Option3">Option 3</MenuItem>
-            </Select>
-            </Grid>
-            <Grid item xs={12}>
-            <Select
-                labelId="second-label"
-                id="second-select"
-                value={second}
-                onChange={handleSecondChange}
-                displayEmpty
-                fullWidth
-            >
-                <MenuItem value="" disabled>
-                Site
-                </MenuItem>
-                <MenuItem value="Option1">Option 1</MenuItem>
-                <MenuItem value="Option2">Option 2</MenuItem>
-                <MenuItem value="Option3">Option 3</MenuItem>
-            </Select>
-            </Grid>
-            <Grid item xs={12}>
-            <Select
-                labelId="third-label"
-                id="third-select"
-                value={third}
-                onChange={handleThirdChange}
-                displayEmpty
-                fullWidth
-            >
-                <MenuItem value="" disabled>
-                Date
-                </MenuItem>
-                <MenuItem value="Option1">Option 1</MenuItem>
-                <MenuItem value="Option2">Option 2</MenuItem>
-                <MenuItem value="Option3">Option 3</MenuItem>
-            </Select>
-            </Grid>
-            <Grid item xs={12} className={classes.button}>
-            <Button variant="contained" color="primary">
-                Confirm
+  return (
+    <div className={classes.root}>
+      <h3>Select Stock and Period</h3>
+      <Form>
+        <FormGroup row>
+          <Label md={3} for="stock-select">Select Stock</Label>
+          <Col md={9}>
+            <Input 
+            type="select" 
+            name="stock" 
+            id="stock-select" 
+            value={props.selectedStock} 
+            onChange={handleStockChange}
+            style={{ width: "148px" }}>
+              <option value="" disabled>Select Stock</option>
+              <option value="AAPL">AAPL</option>
+              <option value="GOOGL">GOOGL</option>
+              <option value="TSLA">TSLA</option>
+            </Input>
+          </Col>
+        </FormGroup>
+        <br></br>
+        <FormGroup row>
+          <Label md={3} for="start-date-select">Select Start Date</Label>
+          <Col md={9}>
+            <div className="react-datepicker-wrapper">
+              <DatePicker 
+              id="start-date-select" 
+              selected={props.selectedStartDate} 
+              onChange={date => props.setSelectedStartDate(date)} />
+            </div>
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Label md={3} for="end-date-select">Select End Date</Label>
+          <Col md={9}>
+            <div className="react-datepicker-wrapper">
+              <DatePicker 
+              id="end-date-select"
+              selected={props.selectedEndDate} 
+              onChange={date => props.setSelectedEndDate(date)} />
+            </div>
+          </Col>
+        </FormGroup>
+        <br></br>
+        <FormGroup row>
+          <Col md={{ size: 9, offset: 3 }}>
+            <Button className={classes.button} variant="contained" color="primary" onClick={handleSubmitButton}>
+              Confirm
             </Button>
-            </Grid>
-        </Grid>
-        </div>
-    );
+          </Col>
+        </FormGroup>
+      </Form>
+    </div>
+  );
 }
+
+export default CombinationBox;

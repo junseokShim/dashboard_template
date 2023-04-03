@@ -22,15 +22,19 @@ const Sidebar = () => {
         <List>
         <ListItem button>
             <ListItemIcon><InboxIcon /></ListItemIcon>
-            <ListItemText primary={'Item 1'} />
-        </ListItem>
-        <ListItem button>
-            <ListItemIcon><MailIcon /></ListItemIcon>
-            <ListItemText primary={'Item 2'} />
+            <ListItemText primary={'Nasdaq'} />
         </ListItem>
         <ListItem button>
             <ListItemIcon><InboxIcon /></ListItemIcon>
-            <ListItemText primary={'Item 3'} />
+            <ListItemText primary={'Kospi'} />
+        </ListItem>
+        <ListItem button>
+            <ListItemIcon><InboxIcon /></ListItemIcon>
+            <ListItemText primary={'Kosdaq'} />
+        </ListItem>
+        <ListItem button>
+            <ListItemIcon><InboxIcon /></ListItemIcon>
+            <ListItemText primary={'Bitcoin'} />
         </ListItem>
         {/* add more list items here */}
         </List>

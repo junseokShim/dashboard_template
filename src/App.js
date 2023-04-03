@@ -14,6 +14,10 @@ const App = () => {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const [selectedStock, setSelectedStock] = useState('');
+  const [selectedStartDate, setSelectedStartDate] = useState('');
+  const [selectedEndDate, setSelectedEndDate] = useState('');
+
   const handleSidebarClose = () => {
     setIsSidebarOpen(false);
   };
@@ -32,10 +36,21 @@ const App = () => {
             <ParentComponent />
           </Grid>
           <Grid item xs={4}>
-            <CombinationBox />
+            <CombinationBox 
+            selectedStock = {selectedStock}
+            selectedStartDate = {selectedStartDate}
+            selectedEndDate = {selectedEndDate}
+            setSelectedStock = {setSelectedStock}
+            setSelectedStartDate = {setSelectedStartDate}
+            setSelectedEndDate = {setSelectedEndDate}
+            />
           </Grid>
         </Grid>
-        <StockChart style={{padding: "10px"}} />
+        <StockChart 
+        style={{padding: "10px"}} 
+        selectedStock={selectedStock}
+        selectedStartDate={selectedStartDate}
+        selectedEndDate={selectedEndDate}/>
       </Grid>
       <Grid item xs={12}>
         <Footer />
