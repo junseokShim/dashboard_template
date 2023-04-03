@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -12,6 +13,8 @@ import {
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,13 +32,19 @@ const CombinationBox = (props) => {
     props.setSelectedStock(event.target.value);
   };
 
-  const handleSubmitButton = () => {
-    console.log('Selected Stock:', props.selectedStock);
-    console.log('Selected Start Date:', props.electedStartDate);
-    console.log('Selected End Date:', props.selectedEndDate);
-    alert(props.selectedStock);
-    alert(props.selectedStartDate);
-    alert(props.selectedEndDate);
+  const handleSubmitButton = async () => {
+    try {
+      const url = 'http://localhost:5001/api';  // Flask 서버의 URL 주소
+      const response = await axios.post(url, {
+        stock: props.selectedStock,
+        startDate: props.selectedStartDate,
+        endDate: props.selectedEndDate
+      });
+      const receivedData = JSON.stringify(response.data)
+      props.setReceivedData(receivedData)
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

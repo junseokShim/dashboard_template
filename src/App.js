@@ -17,6 +17,8 @@ const App = () => {
   const [selectedStock, setSelectedStock] = useState('');
   const [selectedStartDate, setSelectedStartDate] = useState('');
   const [selectedEndDate, setSelectedEndDate] = useState('');
+  const [receivedData, setReceivedData] = useState('');
+
 
   const handleSidebarClose = () => {
     setIsSidebarOpen(false);
@@ -43,6 +45,7 @@ const App = () => {
             setSelectedStock = {setSelectedStock}
             setSelectedStartDate = {setSelectedStartDate}
             setSelectedEndDate = {setSelectedEndDate}
+            setReceivedData = {setReceivedData}
             />
           </Grid>
         </Grid>
@@ -50,7 +53,8 @@ const App = () => {
         style={{padding: "10px"}} 
         selectedStock={selectedStock}
         selectedStartDate={selectedStartDate}
-        selectedEndDate={selectedEndDate}/>
+        selectedEndDate={selectedEndDate}
+        receivedData={receivedData}/>
       </Grid>
       <Grid item xs={12}>
         <Footer />
