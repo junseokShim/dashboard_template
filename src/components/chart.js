@@ -9,19 +9,10 @@ const data = [
   ['2017', 1030],
 ];
 
-function convertData(originalData) {
-  // originalData가 배열이 아니면 빈 배열([])을 반환
-  if (!Array.isArray(originalData)) {
-    return [];
-  }
-  
-  const convertedData = [["date", "price"]];
-
-  originalData.forEach((item) => {
-    convertedData.push([item.date, item.price]);
-  });
-
-  return convertedData;
+function convertData(data) {
+  const chartData = [['day', 'price']];
+  data.forEach((d) => chartData.push([d.date.slice(0, 4), d.price]));
+  return chartData;
 }
 
 const options = {
@@ -31,12 +22,27 @@ const options = {
 };
 
 const StockChart = (props) => {
-  //const dataLength = props.receivedData.data.length;
   console.log(props.receivedData)
-  const data = convertData(props.receivedData)
-  console.log(data)
+  const data_to_json = JSON.parse(`{${props.receivedData.trim().slice(1, -1)}}`);
+  //const data_to_json = JSON.parse(`{${props.receivedData}}`);
+
+  console.log(data_to_json.data)
+
+  if (props.receivedData !== ""){
+
+    if (data_to_json.data.length >= 1) {
+      return (
+        <Chart chartType="LineChart" data={data_to_json.data} options={options} width="100%" height="400px" />
+      );
+
+    }
+
+  }
+
   return (
-    <Chart chartType="LineChart" data={data} options={options} width="100%" height="400px" />
+    <div>
+      
+    </div>
   );
 };
 
