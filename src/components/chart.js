@@ -1,47 +1,40 @@
 import React, { useState } from 'react';
 import { Chart } from 'react-google-charts';
 
-const data = [
-  ['Year', 'Sales'],
-  ['2014', 1000],
-  ['2015', 1170],
-  ['2016', 660],
-  ['2017', 1030],
-];
 
 function convertData(data) {
-  const chartData = [['day', 'price']];
-  data.forEach((d) => chartData.push([d.date.slice(0, 4), d.price]));
+  const chartData = [['Day', 'Price', 'MA20', 'MA60', 'MA90']];
+  for (let i = 0; i<100; i++){
+    console.log(data[i])
+    if (data[i] && data[i].date && data[i].price && data[i].MA20) {
+      chartData.push([data[i].date, data[i].price, data[i].MA20, data[i].MA60, data[i].MA90])
+    }
+  }
   return chartData;
 }
 
-const options = {
-  title: 'Company Performance',
-  curveType: 'function',
-  legend: { position: 'bottom' },
-};
 
 const StockChart = (props) => {
-  console.log(props.receivedData)
+  const title_name = props.selectedStock + " Performance";
   const data_to_json = JSON.parse(`{${props.receivedData.trim().slice(1, -1)}}`);
-  //const data_to_json = JSON.parse(`{${props.receivedData}}`);
 
-  console.log(data_to_json.data)
+  const options = {
+    title: title_name,
+    curveType: 'function',
+    legend: { position: 'bottom' },
+  };
 
   if (props.receivedData !== ""){
-
     if (data_to_json.data.length >= 1) {
+      const convertedData = convertData(data_to_json.data)
       return (
-        <Chart chartType="LineChart" data={data_to_json.data} options={options} width="100%" height="400px" />
+        <Chart chartType="LineChart" data={convertedData} options={options} width="100%" height="400px" />
       );
-
     }
-
   }
 
   return (
-    <div>
-      
+    <div>      
     </div>
   );
 };

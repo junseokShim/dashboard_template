@@ -63,8 +63,12 @@ const CombinationBox = (props) => {
             style={{ width: "148px" }}>
               <option value="" disabled>Select Stock</option>
               <option value="AAPL">AAPL</option>
+              <option value="MSFT">MSFT</option>
               <option value="GOOGL">GOOGL</option>
               <option value="TSLA">TSLA</option>
+              <option value="QQQ">QQQ</option>
+              <option value="SPY">SPY</option>
+              <option value="VEA">VEA</option>
             </Input>
           </Col>
         </FormGroup>

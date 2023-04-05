@@ -26,17 +26,9 @@ function Footer() {
   return (
     <div className={classes.root}>
       <Typography variant="body1" className={classes.text}>
-        Made with
-        <span role="img" aria-label="Heart">
-          ❤️
-        </span>
-        by&nbsp;
-        <Link href="https://example.com" target="_blank" rel="noopener" className={classes.link}>
-          Example
-        </Link>
-        |&nbsp;
+        Made by Junseok Shim - Source Code : 
         <Link href="https://github.com/example" target="_blank" rel="noopener" className={classes.link}>
-          GitHub
+          GitHub Link
         </Link>
       </Typography>
     </div>

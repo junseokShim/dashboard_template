@@ -12,17 +12,10 @@ import CombinationBox from './components/comboboxes';
 
 const App = () => {
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
   const [selectedStock, setSelectedStock] = useState('');
   const [selectedStartDate, setSelectedStartDate] = useState('');
   const [selectedEndDate, setSelectedEndDate] = useState('');
   const [receivedData, setReceivedData] = useState('');
-
-
-  const handleSidebarClose = () => {
-    setIsSidebarOpen(false);
-  };
 
   return (
     <Grid container spacing={1}>
@@ -35,7 +28,11 @@ const App = () => {
       <Grid item xs={8} style={{ border: "0.5px solid #ccc", padding: "10px" }}>
         <Grid container spacing={1}>
           <Grid item xs={8}>
-            <ParentComponent />
+            <ParentComponent
+            selectedStock={selectedStock}
+            selectedStartDate = {selectedStartDate}
+            selectedEndDate = {selectedEndDate}
+            />
           </Grid>
           <Grid item xs={4}>
             <CombinationBox 
