@@ -24,15 +24,15 @@ const Sidebar = () => {
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary={'Nasdaq'} />
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={() => {alert('Kospi 지수는 준비중입니다!');}}>
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary={'Kospi'} />
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={() => {alert('Kosdaq 지수는 준비중입니다!');}}>
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary={'Kosdaq'} />
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={() => {alert('Bitcoin 지수는 준비중입니다!');}}>
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary={'Bitcoin'} />
         </ListItem>

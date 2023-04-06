@@ -32,7 +32,7 @@ const App = () => {
             selectedStock={selectedStock}
             selectedStartDate = {selectedStartDate}
             selectedEndDate = {selectedEndDate}
-            />
+            receivedData={receivedData}/>
           </Grid>
           <Grid item xs={4}>
             <CombinationBox 
@@ -53,6 +53,7 @@ const App = () => {
         selectedEndDate={selectedEndDate}
         receivedData={receivedData}/>
       </Grid>
+      <br></br>
       <Grid item xs={12}>
         <Footer />
       </Grid>

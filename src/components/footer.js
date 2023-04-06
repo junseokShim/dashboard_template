@@ -26,10 +26,13 @@ function Footer() {
   return (
     <div className={classes.root}>
       <Typography variant="body1" className={classes.text}>
-        Made by Junseok Shim - Source Code : 
+        Made by ©Junseok Shim - Source Code : 
         <Link href="https://github.com/example" target="_blank" rel="noopener" className={classes.link}>
           GitHub Link
         </Link>
+      </Typography>
+      <Typography variant="body1" className={classes.text}>
+        Contact : tjdrbsrhk123@gmail.com (010-7297-6094) 
       </Typography>
     </div>
   );

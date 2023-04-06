@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Chart } from 'react-google-charts';
 
 
 function convertData(data) {
   const chartData = [['Day', 'Price', 'MA20', 'MA60', 'MA90']];
+  
   for (let i = 0; i<100; i++){
     console.log(data[i])
     if (data[i] && data[i].date && data[i].price && data[i].MA20) {
